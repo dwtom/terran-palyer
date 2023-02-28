@@ -3,7 +3,7 @@
  * @Author: Dong Wei
  * @Date: 2023-02-27 09:38:00
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 14:31:51
+ * @LastEditTime: 2023-02-28 15:51:45
  * @FilePath: \audio-player\src\components\TopDragBar.vue
 -->
 <template>
@@ -100,13 +100,14 @@ const windowControl = (opt: number) => {
   position: fixed;
   top: 0;
   padding: 0 18px;
-  height: 7vh;
+  height: var(--header-height);
   width: 100%;
   background-color: v-bind('props.bg');
   -webkit-app-region: drag;
   z-index: 9999;
 }
 .title {
+  // color: #fff;
   font-family: Gilroy-ExtraBold;
 }
 .window-icon {

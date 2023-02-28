@@ -3,11 +3,12 @@
  * @Author: Dong Wei
  * @Date: 2023-02-27 11:16:46
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 15:00:42
+ * @LastEditTime: 2023-02-28 16:42:09
  * @FilePath: \audio-player\src\views\welcome.vue
 -->
 <template>
   <div class="wrap">
+    <AppToast text="Welcome"></AppToast>
     <div class="anima-block"></div>
     <div class="form-part">
       <AppInput label="UserName" />
@@ -25,8 +26,8 @@ const router = useRouter();
 <style scoped lang="scss">
 .wrap {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 .anima-block {
   position: absolute;

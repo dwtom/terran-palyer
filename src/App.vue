@@ -1,7 +1,9 @@
 <template>
   <!-- <TopDragBar :bg="topBg"></TopDragBar> -->
   <TopDragBar></TopDragBar>
-  <router-view></router-view>
+  <div class="content">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,4 +23,12 @@
 // );
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.content {
+  padding: var(--header-height) 18px 0 18px;
+  // height: calc(100vh - var(--header-height));
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+}
+</style>

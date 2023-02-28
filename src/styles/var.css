@@ -19,4 +19,6 @@
   --color-border: #e6e7e9;
   /* 字体大小 */
   --font-size: 14px;
+  /* 头部高度 */
+  --header-height: 7vh;
 }
