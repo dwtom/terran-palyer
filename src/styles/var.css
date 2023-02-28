@@ -1,0 +1,22 @@
+/*
+ * @Description: 全局变量
+ * @Author: Dong Wei
+ * @Date: 2022-07-26 09:03:44
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2023-02-28 14:32:22
+ * @FilePath: \audio-player\src\styles\var.css
+ */
+:root {
+  /* 主题色 */
+  --color-main: #ff4757;
+  /* 正文颜色 */
+  --color-text: #111;
+  /* 浅色文字 */
+  --color-text-light: #666;
+  /* 超链颜色 */
+  --color-link: #111;
+  /* 边框颜色 */
+  --color-border: #e6e7e9;
+  /* 字体大小 */
+  --font-size: 14px;
+}

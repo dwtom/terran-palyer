@@ -1,0 +1,35 @@
+/*
+ * @Description: 字体配置
+ * @Author: Dong Wei
+ * @Date: 2022-08-05 16:03:45
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2023-02-27 15:45:26
+ * @FilePath: \audio-player\src\styles\font.css
+ */
+/* Emoji字体 */
+@font-face {
+  font-family: Emoji;
+  src: local('Apple Color Emoji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), local('Noto Color Emoji');
+  unicode-range: U+1F000-1F644, U+203C-3299;
+}
+
+@font-face {
+  font-family: SourceHanSansCN-Heavy;
+  src: url('../assets/fonts/SourceHanSansCN-Heavy.otf');
+}
+@font-face {
+  font-family: SourceHanSansCN-Bold;
+  src: url('../assets/fonts/SourceHanSansCN-Bold.otf');
+}
+@font-face {
+  font-family: Bender-Bold;
+  src: url('../assets/fonts/Bender-Bold.woff');
+}
+@font-face {
+  font-family: Geometos;
+  src: url('../assets/fonts/Geometos.woff');
+}
+@font-face {
+  font-family: Gilroy-ExtraBold;
+  src: url('../assets/fonts/Gilroy-ExtraBold.woff');
+}

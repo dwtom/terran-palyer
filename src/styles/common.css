@@ -1,0 +1,157 @@
+/*
+ * @Description: 公共样式
+ * @Author: Dong Wei
+ * @Date: 2022-08-05 16:02:30
+ * @LastEditors: Dong Wei
+ * @LastEditTime: 2023-02-28 15:02:02
+ * @FilePath: \audio-player\src\styles\common.css
+ */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: var(--color-text);
+  font-size: var(--font-size);
+  font-family: SourceHanSansCN-Bold, system-ui, —apple-system, Segoe UI, Roboto, Emoji, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+  background-color: #eff5f5;
+  /* background-color: #f7f8fa; */
+}
+
+#app {
+  height: 100%;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  color: var(--color-link);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+i {
+  font-style: normal;
+}
+
+/* flex样式 BEGIN */
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+/* 水平两端对齐 垂直居中 */
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* flex样式 END */
+
+/* 文字溢出... */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 清除浮动 */
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* 整个滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 5px rgba(222, 222, 224, 0.2);
+  box-shadow: inset 0 0 5px rgba(222, 222, 224, 0.2);
+  background: rgba(222, 222, 224, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 201, 204, 1);
+}
+
+::-webkit-scrollbar-corner {
+  display: block;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(222, 222, 224, 0.2);
+  box-shadow: inset 0 0 5px rgba(222, 222, 224, 0.2);
+  border-radius: 0;
+  background: rgba(222, 222, 224, 0.1);
+}
+
+/* 滚动条样式修改 END */
+
+.select-none {
+  user-select: none;
+}
+
+.pointer {
+  cursor: pointer;
+}

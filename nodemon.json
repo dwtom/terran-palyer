@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "node_modules",
+    "out"
+  ],
+  "verbose": true,
+  "watch": [
+    "./electron/*.*"
+  ],
+  "restartable": "rs",
+  "ext": "html, js"
+}
