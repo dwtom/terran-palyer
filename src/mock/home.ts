@@ -1,12 +1,53 @@
 /*
- * @Description: 最新歌曲
+ * @Description: 首页mock数据
  * @Author: Dong Wei
- * @Date: 2023-02-28 17:22:17
+ * @Date: 2023-03-01 13:47:37
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 17:22:41
- * @FilePath: \audio-player\src\mock\latestSong.ts
+ * @LastEditTime: 2023-03-01 14:45:00
+ * @FilePath: \audio-player\src\mock\home.ts
  */
-const songList: any[] = [
+export interface BannerList {
+  pic: string;
+  typeTitle: string;
+}
+// 轮播图
+export const bannerList: BannerList[] = [
+  {
+    pic: 'http://p1.music.126.net/9oLDS_bunqfaPxDQRSH1gw==/109951168430161364.jpg',
+    typeTitle: '新歌首发',
+  },
+  {
+    pic: 'http://p1.music.126.net/HIfqlKXtqhbMl0V2HB4uWw==/109951168430247017.jpg',
+    typeTitle: '新歌首发',
+  },
+  {
+    pic: 'http://p1.music.126.net/tSeABboDkBw0PXYiskoOJg==/109951168430203112.jpg',
+    typeTitle: '新歌首发',
+  },
+  {
+    pic: 'http://p1.music.126.net/jjL-5-ol6KWtAdYekFBi6g==/109951168430223571.jpg',
+    typeTitle: '新歌首发',
+  },
+  {
+    pic: 'http://p1.music.126.net/oJRpJppvb9mXTsxcEH91WA==/109951168430320728.jpg',
+    typeTitle: '新碟首发',
+  },
+  {
+    pic: 'http://p1.music.126.net/krCHvlDC0tSl8TOxDJj1HA==/109951168430356383.jpg',
+    typeTitle: '热歌推荐',
+  },
+  {
+    pic: 'http://p1.music.126.net/ZdhO7v3L7EXZICQPcEJdOA==/109951168430363384.jpg',
+    typeTitle: '新碟首发',
+  },
+  {
+    pic: 'http://p1.music.126.net/O2s4g-d9BgZdNFMPBgfqow==/109951168430375804.jpg',
+    typeTitle: '新碟首发',
+  },
+];
+
+// 最新歌曲
+export const songList: any[] = [
   {
     name: 'Cracker Island (feat. Thundercat)',
     id: 2024999270,
@@ -281,4 +322,85 @@ const songList: any[] = [
   },
 ];
 
-export default songList;
+// 推荐歌单
+export const palyList: any[] = [
+  {
+    name: '『游戏』玩游戏必备电音超燃向',
+    picUrl: 'https://p2.music.126.net/jpGpwxor2KCsMsqFhROGNA==/109951168164727442.jpg',
+    id: 1980964492,
+  },
+  {
+    name: '戳爷/黄老板/断眉/萌德/骚姆/比伯/烟卷',
+    picUrl: 'https://p2.music.126.net/sOWvFHC7alSUXHxmsTr1bQ==/109951163610820733.jpg',
+    id: 2037020941,
+  },
+  {
+    name: '百首老歌：再续当年情',
+    picUrl: 'https://p2.music.126.net/RGsJyDuaOVNx0Mt0AvByQQ==/109951166994369315.jpg',
+    id: 1994370897,
+  },
+  {
+    name: '失恋日记 | 换不同的场景 但哪里都是你',
+    picUrl: 'https://p2.music.126.net/BLMmLfUNu0zdprDISL_hTw==/109951165764406932.jpg',
+    id: 6606027462,
+  },
+  {
+    name: '[一周欧美上新]虚拟天团Gorillaz第八张录音室专辑已发行',
+    picUrl: 'https://p2.music.126.net/tdtYUzrKmrBpYOvADzAZbg==/109951168423026705.jpg',
+    id: 2859214503,
+  },
+  {
+    name: '这些充满『强烈画面感』的音乐',
+    picUrl: 'https://p2.music.126.net/uXbDB1aWsp36_I_lQs-DeA==/1411772930113118.jpg',
+    id: 156934569,
+  },
+  {
+    name: '100首让你瞬间勾起回忆的老歌',
+    picUrl: 'https://p2.music.126.net/pAidnPdX-0fhVakVXiHMzg==/18575149441852040.jpg',
+    id: 2134203011,
+  },
+  {
+    name: '愿还会有人，做个傻子陪你浪费一生',
+    picUrl: 'https://p2.music.126.net/AWcDI5wc9fkS2bZt6wIm-Q==/109951163212638897.jpg',
+    id: 2042205655,
+  },
+  {
+    name: '假如能回到过去，你想做什么',
+    picUrl: 'https://p2.music.126.net/kZb9DO4vykqiYEx0HHx86w==/109951163065542645.jpg',
+    id: 1982066521,
+  },
+  {
+    name: '『武侠影视金曲100首』每个人心中的江湖梦',
+    picUrl: 'https://p2.music.126.net/gsLYUhZsZbRLXQt_TOaDIw==/109951164287662942.jpg',
+    id: 2933222749,
+  },
+];
+
+// 推荐歌手
+export const artists: any[] = [
+  {
+    name: '周杰伦',
+    img1v1Url: 'http://p1.music.126.net/Esjm32Q05PQoX8pF008u7w==/109951165793871057.jpg',
+    picUrl: 'http://p1.music.126.net/BbR3TuhPULMLDV0MjczI4g==/109951165793869641.jpg',
+  },
+  {
+    name: 'いきものがかり',
+    img1v1Url: 'https://p2.music.126.net/8QeIpaLm-K3JcV404viDkw==/109951166541147754.jpg',
+    picUrl: 'https://p2.music.126.net/Qo22P9NoV5RhWk7fZu_r6g==/109951166541146743.jpg',
+  },
+  {
+    name: '李荣浩',
+    img1v1Url: 'http://p1.music.126.net/MST3f1Uv77SwFyTf0Gcj5w==/109951168324499292.jpg',
+    picUrl: 'http://p1.music.126.net/mkWDxcXZk8W3NwdCEMg00A==/109951165693668650.jpg',
+  },
+  {
+    name: 'G.E.M.邓紫棋',
+    img1v1Url: 'http://p1.music.126.net/oJorrgJ3IotZUAbZkBMuFw==/109951167771736533.jpg',
+    picUrl: 'http://p1.music.126.net/fq1O8ZRT5_FHzg_uLEtUQA==/109951167773880633.jpg',
+  },
+  {
+    name: '陈奕迅',
+    img1v1Url: 'http://p1.music.126.net/rYYhHXZHwCfizE0N46F37Q==/109951166115911716.jpg',
+    picUrl: 'http://p1.music.126.net/w_vuv9hBWq2hlJxJcmJrjg==/109951166115915081.jpg',
+  },
+];

@@ -3,11 +3,11 @@
  * @Author: Dong Wei
  * @Date: 2023-02-28 16:14:29
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 17:02:18
- * @FilePath: \audio-player\src\components\SwiperHome.vue
+ * @LastEditTime: 2023-03-01 13:48:34
+ * @FilePath: \audio-player\src\components\HomeSwiper.vue
 -->
 <script setup lang="ts">
-import type { BannerList } from '@/mock/banner';
+import type { BannerList } from '@/mock/home';
 
 const props = defineProps<{
   bannerList: BannerList[] | never[];

@@ -3,7 +3,7 @@
  * @Author: Dong Wei
  * @Date: 2022-08-05 16:02:30
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 15:02:02
+ * @LastEditTime: 2023-03-01 17:06:09
  * @FilePath: \audio-player\src\styles\common.css
  */
 *,
@@ -31,6 +31,7 @@ body {
 
 #app {
   height: 100%;
+  overflow-x: hidden;
 }
 
 ul,
