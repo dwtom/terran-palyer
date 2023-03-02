@@ -16,9 +16,13 @@ const createWindow = () => {
       preload: path.join(__dirname, './preload.cjs'),
     },
   });
-
-  win.loadURL('http://localhost:8110');
-  // win.loadFile('index.html');
+  // 判断是否是生产环境
+  if (app.isPackaged) {
+    // FIXME: 打包问题待解决
+    win.loadFile(path.join(__dirname, '../dist/index.html'));
+  } else {
+    win.loadURL('http://localhost:8110');
+  }
 
   //ipcMain初始化
   IpcMainEvent(win);

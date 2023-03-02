@@ -3,9 +3,38 @@
  * @Author: Dong Wei
  * @Date: 2023-03-01 15:32:19
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-01 15:49:16
+ * @LastEditTime: 2023-03-02 17:02:52
  * @FilePath: \audio-player\src\utils\player.ts
  */
+import { Howl } from 'howler';
+import pinia from '@/stores';
+import { storeToRefs } from 'pinia';
+import { usePlayerStore } from '@/stores/playerStore';
+
+// import musicSource from '@/assets/media/L1vebeats; Push.audio - Strings.flac';
+
+const playerStore = usePlayerStore(pinia);
+
+const { currentMusic, playing, progress, volume, time, playerChangeSong } = storeToRefs(playerStore);
+
+let musicProgress: any = null;
+let loadLast = true;
+let isProgress = false;
+
+window.addEventListener('mousedown', (e: any) => {
+  if (e?.target?.parentNode?.parentNode.id == 'widget-progress') {
+    changeProgressByDragStart();
+    isProgress = true;
+  }
+});
+
+window.addEventListener('mouseup', () => {
+  if (isProgress) {
+    changeProgressByDragEnd(progress.value);
+    isProgress = false;
+  }
+});
+
 // 获取播放器时间
 export function songTime2(time: number) {
   let min: string | number = Math.floor(time / 60);
@@ -20,112 +49,82 @@ export function songTime2(time: number) {
 }
 
 export function startMusic() {
-  // if (
-  //   playMode.value == 0 &&
-  //   currentIndex.value == songList.value.length - 1 &&
-  //   playModeOne &&
-  //   currentMusic.value.seek() == 0
-  // ) {
-  //   playNext();
-  //   playModeOne = false;
-  //   return;
-  // }
-  // if (!playing.value) {
-  //   currentMusic.value.play();
-  // }
-  // if (lyricShow.value) {
-  //   isLyricDelay.value = false;
-  //   const forbidDelayTimer = setTimeout(() => {
-  //     isLyricDelay.value = true;
-  //     clearTimeout(forbidDelayTimer);
-  //   }, 700);
-  // }
-  // if (videoIsPlaying.value) {
-  //   musicVideoDOM.value.play();
-  //   if (songList.value[currentIndex.value].type == 'local') startLocalMusicVideo();
-  // }
+  // console.log(volume.value);
+  if (!progress.value) {
+    play();
+  }
+  playing.value = true;
+  currentMusic.value?.play();
 }
 
 export function pauseMusic() {
-  // clearInterval(musicProgress);
-  // if (playing.value) {
-  //   currentMusic.value.fade(volume.value, 0, 200);
-  //   currentMusic.value.once('fade', () => {
-  //     currentMusic.value.pause();
-  //     playing.value = false;
-  //   });
-  // }
-  // if (videoIsPlaying.value) {
-  //   musicVideoDOM.value.pause();
-  //   if (songList.value[currentIndex.value].type == 'local') clearInterval(videoCheckInterval);
-  // }
+  clearInterval(musicProgress);
+  if (playing.value) {
+    currentMusic.value?.fade(volume.value, 0, 200);
+    currentMusic.value?.once('fade', () => {
+      currentMusic.value?.pause();
+      playing.value = false;
+    });
+  }
 }
 
-export function playLast() {
-  // let id = null;
-  // let index = null;
-  // if (playMode.value != 3) {
-  //   if (currentIndex.value - 1 < 0) {
-  //     index = songList.value.length - 1;
-  //     id = songList.value[index].id;
-  //   } else {
-  //     id = songList.value[currentIndex.value - 1].id;
-  //     index = currentIndex.value - 1;
-  //   }
-  // }
-  // if (playMode.value == 3) {
-  //   if (shuffleIndex.value - 1 < 0) {
-  //     index = shuffledList.value.length - 1;
-  //     id = shuffledList.value[index].id;
-  //   } else {
-  //     index = shuffleIndex.value - 1;
-  //     id = shuffledList.value[index].id;
-  //   }
-  // }
-  // addSong(id, index, true);
-}
-export function playNext() {
-  // let id = null;
-  // let index = null;
-  // if (playMode.value != 3) {
-  //   if (songList.value.length - 1 == currentIndex.value) {
-  //     index = 0;
-  //     id = songList.value[index].id;
-  //   } else {
-  //     index = currentIndex.value + 1;
-  //     id = songList.value[index].id;
-  //   }
-  // }
-  // if (playMode.value == 3) {
-  //   if (shuffleIndex.value == shuffledList.value.length - 1) {
-  //     index = 0;
-  //     id = shuffledList.value[index].id;
-  //   } else {
-  //     index = shuffleIndex.value + 1;
-  //     id = shuffledList.value[index].id;
-  //   }
-  // }
-  // addSong(id, index, true);
+export function play() {
+  // 播放默认的本地音乐
+  const musicSource = new URL('../assets/media/L1vebeats; Push.audio - Strings.flac', import.meta.url).href;
+  if (currentMusic.value) currentMusic.value.unload();
+  currentMusic.value = new Howl({
+    src: [musicSource],
+    autoplay: false,
+    html5: true,
+    preload: true,
+    format: ['mp3', 'flac'],
+    loop: false,
+    volume: volume.value,
+    onend: function () {
+      clearInterval(musicProgress);
+      console.log('end');
+    },
+  });
+  currentMusic.value.once('load', () => {
+    time.value = Math.floor(currentMusic.value?.duration() ?? 0);
+    if (loadLast) {
+      currentMusic.value?.volume(0);
+      currentMusic.value?.seek(progress.value);
+      loadLast = false;
+    }
+    playerChangeSong.value = false;
+  });
+  currentMusic.value.on('play', () => {
+    currentMusic.value?.fade(0, volume.value, 200);
+    startProgress();
+    playing.value = true;
+  });
+  currentMusic.value.on('pause', () => {
+    clearInterval(musicProgress);
+    playing.value = false;
+    currentMusic.value?.fade(volume.value, 0, 200);
+  });
 }
 
-export function changeProgress(toTime) {
-  // if (!widgetState.value && lyricShow.value && lyricEle.value) clearLycAnimation();
-  // if (videoIsPlaying.value) {
-  //   musicVideoCheck(toTime, true);
-  // }
-  // currentMusic.value.seek(toTime);
+export function startProgress() {
+  clearInterval(musicProgress);
+  progress.value = currentMusic.value?.seek() ?? 0;
+  musicProgress = setInterval(() => {
+    if ((currentMusic.value?.seek() as number) < time.value) {
+      progress.value = currentMusic.value?.seek() ?? 0;
+    }
+  }, 1000);
 }
 
-export function changePlayMode() {
-  // if (playMode.value != 3) playMode.value += 1;
-  // else playMode.value = 0;
-  // if (playMode.value == 2) currentMusic.value.loop(true); //循环模式
-  // else currentMusic.value.loop(false);
-  // if (playMode.value == 3) {
-  //   setShuffledList();
-  // } else {
-  //   shuffledList.value = null;
-  //   shuffleIndex.value = null;
-  // }
-  // windowApi.changeTrayMusicPlaymode(playMode.value);
+export function changeProgress(toTime: number) {
+  currentMusic.value?.seek(toTime);
+}
+
+//控制拖拽进度条
+export function changeProgressByDragStart() {
+  clearInterval(musicProgress);
+}
+export function changeProgressByDragEnd(toTime: number) {
+  changeProgress(toTime);
+  if (playing.value) startProgress();
 }

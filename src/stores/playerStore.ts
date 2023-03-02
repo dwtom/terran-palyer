@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia';
 
+import type { Howl } from 'howler';
+
 export const usePlayerStore = defineStore('playerStore', {
   state: () => {
     return {
       widgetState: true, //是否开启widget
-      currentMusic: null, //播放列表的索引
+      currentMusic: null as Howl | null, //播放列表的索引
       playing: false, //是否正在播放
       progress: 0, //进度条
       volume: 0.3, //音量

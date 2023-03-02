@@ -3,7 +3,7 @@
  * @Author: Dong Wei
  * @Date: 2023-03-01 15:31:09
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-01 17:16:44
+ * @LastEditTime: 2023-03-02 16:50:11
  * @FilePath: \audio-player\src\components\MusicWidget.vue
 -->
 <script setup lang="ts">
@@ -17,12 +17,12 @@ const playerStore = usePlayerStore();
 const { currentMusic, playing, progress, playMode, volume, time } = storeToRefs(playerStore);
 const showMusicTime = ref(false);
 
-// watch(
-//   () => volume.value,
-//   () => {
-//     currentMusic.value.volume(volume.value);
-//   }
-// );
+watch(
+  () => volume.value,
+  () => {
+    currentMusic.value.volume(volume.value);
+  }
+);
 </script>
 <template>
   <div class="music-widget flex-sb">
@@ -43,7 +43,7 @@ const showMusicTime = ref(false);
     </div>
     <div class="music-info">
       <div class="music-img">
-        <img :src="'https://p1.music.126.net/a6Mn4Xyr8hcnA1x8vJeUug==/109951165871755024.jpg?param=128y128'" alt="" />
+        <img :src="'http://p3.music.126.net/XRQ1xlgHH_0tixPe_Q5dVA==/109951168251202858.jpg?param=128y128'" alt="" />
         <div class="open-player">
           <svg
             t="1670207990373"
@@ -65,9 +65,9 @@ const showMusicTime = ref(false);
       </div>
       <div class="music-info-other">
         <!-- TODO: -->
-        <span class="music-name" :class="{ 'music-time-in': showMusicTime }">音乐名称</span>
+        <span class="music-name" :class="{ 'music-time-in': showMusicTime }">Strings</span>
         <div class="music-author">
-          <span class="author">音乐家</span>
+          <span class="author">L1vebeats/Push.audio</span>
         </div>
       </div>
     </div>
