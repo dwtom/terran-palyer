@@ -4,18 +4,23 @@
   "private": true,
   "main": "electron/main.cjs",
   "author": "dwtom",
+  "description": "an audio player",
   "scripts": {
     "web-dev": "vite",
     "electron-dev": "nodemon --exec electron .",
     "dev": "concurrently \"vite\" \"electron .\"",
+    "build-only": "vite build",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
-    "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "howler": "^2.2.3",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.32",
@@ -25,6 +30,11 @@
     "vue-slider-component": "^4.1.0-beta.7"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/howler": "^2.2.7",
     "@types/node": "^18.14.0",
