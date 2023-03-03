@@ -12,14 +12,21 @@
 <script setup lang="ts">
 const route = useRoute();
 const showWidget = ref(false);
-
+const style = reactive({
+  paddingBottom: '65px',
+  background: '#000',
+});
 watch(
   () => route.name,
   val => {
     if (val === 'welcome') {
       showWidget.value = false;
+      style.paddingBottom = '0';
+      style.background = 'radial-gradient(at top right, #B7B6BB 0%, #E8EAE9 100%)';
     } else {
       showWidget.value = true;
+      style.paddingBottom = '65px';
+      style.background = 'transparent';
     }
   },
   { immediate: true }
@@ -29,10 +36,15 @@ watch(
 <style scoped lang="scss">
 $--widget-height: 65px;
 .content {
-  padding: var(--header-height) 18px $--widget-height 18px;
+  padding-top: var(--header-height);
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-bottom: v-bind('style.paddingBottom');
   height: 100vh;
   width: 100vw;
   overflow-y: auto;
+
+  background: v-bind('style.background');
 }
 
 .music-widget-box {

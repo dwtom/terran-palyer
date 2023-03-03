@@ -18,8 +18,7 @@ const createWindow = () => {
   });
   // 判断是否是生产环境
   if (app.isPackaged) {
-    // FIXME: 打包问题待解决
-    win.loadFile(path.join(__dirname, '../dist/index.html'));
+    win.loadURL('https://www.leeknostory.cn/');
   } else {
     win.loadURL('http://localhost:8110');
   }

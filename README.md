@@ -4,6 +4,8 @@
 
 技术栈：electron+Vue3+Typescript
 
+开发环境建议 node 版本 18.14.0
+
 ## 如何启动
 
 ```
@@ -13,8 +15,13 @@ npm run dev // 直接启动本地客户端(合并了后两个命令)
 如需分别启动则分别执行以下命令
 
 ```
-
 npm run web-dev // 启动前端服务
 
 npm run electron-dev // 启动electron服务
+```
+
+打包
+
+```
+npm run make
 ```

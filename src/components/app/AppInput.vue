@@ -3,21 +3,13 @@
  * @Author: Dong Wei
  * @Date: 2023-02-28 14:06:41
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 14:52:11
+ * @LastEditTime: 2023-03-03 18:26:18
  * @FilePath: \audio-player\src\components\app\AppInput.vue
 -->
 <template>
   <div class="form-control">
     <input type="value" />
     <label>
-      <!-- <span style="transition-delay: 0ms">U</span>
-      <span style="transition-delay: 50ms">s</span>
-      <span style="transition-delay: 100ms">e</span>
-      <span style="transition-delay: 150ms">r</span>
-      <span style="transition-delay: 200ms">n</span>
-      <span style="transition-delay: 250ms">a</span>
-      <span style="transition-delay: 300ms">m</span>
-      <span style="transition-delay: 350ms">e</span> -->
       <span
         v-for="(item, index) in labelInnerArr"
         :key="`${props.label}-${index}`"
@@ -63,7 +55,7 @@ const labelInnerArr = computed(() => {
 
 .form-control input:focus {
   outline: 0;
-  border-bottom-color: var(--color-main);
+  border-bottom-color: #fff;
 }
 
 .form-control label {
@@ -82,7 +74,7 @@ const labelInnerArr = computed(() => {
 }
 
 .form-control input:focus + label span {
-  color: var(--color-main);
+  color: #fff;
   transform: translateY(-15px);
 }
 </style>

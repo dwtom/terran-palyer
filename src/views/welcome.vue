@@ -3,24 +3,23 @@
  * @Author: Dong Wei
  * @Date: 2023-02-27 11:16:46
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 16:42:09
+ * @LastEditTime: 2023-03-03 18:25:01
  * @FilePath: \audio-player\src\views\welcome.vue
 -->
 <template>
   <div class="wrap">
-    <AppToast text="Welcome"></AppToast>
+    <div class="typing-word typing">Everyone told me to retire.Everyone told me to give up.But... Look at me now!</div>
     <div class="anima-block"></div>
     <div class="form-part">
       <AppInput label="UserName" />
       <AppInput label="PassWord" />
       <button class="enter-btn pointer flex-center" @click="router.push('/home')">Let's Start</button>
     </div>
+    <AppToast text="Welcome"></AppToast>
   </div>
 </template>
 
 <script setup lang="ts">
-// import { useRouter } from 'vue-router';
-
 const router = useRouter();
 </script>
 <style scoped lang="scss">
@@ -116,5 +115,30 @@ const router = useRouter();
 
 .enter-btn:active {
   background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+}
+.typing-word {
+  position: absolute;
+  bottom: 3vh;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: Bender-Bold;
+  font-size: 26px;
+}
+.typing {
+  width: 94vw;
+  animation: typing 10s steps(77), blink 0.5s step-end infinite alternate;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
 </style>
