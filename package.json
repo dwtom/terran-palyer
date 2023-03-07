@@ -20,6 +20,7 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "electron-squirrel-startup": "^1.0.0",
     "howler": "^2.2.3",
     "normalize.css": "^8.0.1",
