@@ -1,30 +1,32 @@
 <template>
-  <!-- 顶部功能栏 -->
-  <section class="banner-section flex-sb mt-20">
-    <HomeSwiper :banner-list="bannerList" />
-    <HomeRecommendation />
-    <HomeLatestSong :song-list="songList" />
-  </section>
-  <!-- 推荐歌单 -->
-  <section class="mt-40">
-    <AppTitleBar title-c="推荐歌单" title-e="RECOMMENDED SONG LIST" class="mb-13" />
-    <ul class="play-list grid-list">
-      <li v-for="(item, index) in playList" :key="`playList-${index}`" class="grid-list-item pointer">
-        <img :src="`${item.picUrl}?param=450y450`" alt="" class="grid-list-img play-list-img" />
-        <p class="play-list-word" :title="item.name">{{ item.name }}</p>
-      </li>
-    </ul>
-  </section>
-  <!-- 推荐歌手 -->
-  <section class="artists mt-40">
-    <AppTitleBar title-c="推荐歌手" title-e="RECOMMENDED ARTISTS" class="mb-13" />
-    <ul class="grid-list">
-      <li v-for="(item, index) in artists" :key="`artist-${index}`" class="grid-list-item pointer">
-        <img :src="`${item.img1v1Url}?param=450y450`" alt="" class="grid-list-img artist-img" />
-        <p class="artist-word" :title="item.name">{{ item.name }}</p>
-      </li>
-    </ul>
-  </section>
+  <div class="inner-content">
+    <!-- 顶部功能栏 -->
+    <section class="banner-section flex-sb mt-20">
+      <HomeSwiper :banner-list="bannerList" />
+      <HomeRecommendation />
+      <HomeLatestSong :song-list="songList" />
+    </section>
+    <!-- 推荐歌单 -->
+    <section class="mt-40">
+      <AppTitleBar title-c="推荐歌单" title-e="RECOMMENDED SONG LIST" class="mb-13" />
+      <ul class="play-list grid-list">
+        <li v-for="(item, index) in playList" :key="`playList-${index}`" class="grid-list-item pointer">
+          <img :src="`${item.picUrl}?param=450y450`" alt="" class="grid-list-img play-list-img" />
+          <p class="play-list-word" :title="item.name">{{ item.name }}</p>
+        </li>
+      </ul>
+    </section>
+    <!-- 推荐歌手 -->
+    <section class="artists mt-40">
+      <AppTitleBar title-c="推荐歌手" title-e="RECOMMENDED ARTISTS" class="mb-13" />
+      <ul class="grid-list">
+        <li v-for="(item, index) in artists" :key="`artist-${index}`" class="grid-list-item pointer">
+          <img :src="`${item.img1v1Url}?param=450y450`" alt="" class="grid-list-img artist-img" />
+          <p class="artist-word" :title="item.name">{{ item.name }}</p>
+        </li>
+      </ul>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -44,6 +46,9 @@ const artists = reactive(mockData.artists);
 }
 .mb-13 {
   margin-bottom: 13px;
+}
+.inner-content {
+  padding: 0 18px;
 }
 .banner-section {
   padding-top: 2.8vw;

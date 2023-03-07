@@ -3,7 +3,7 @@
  * @Author: Dong Wei
  * @Date: 2023-03-01 15:31:09
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-02 16:50:11
+ * @LastEditTime: 2023-03-07 09:58:13
  * @FilePath: \audio-player\src\components\MusicWidget.vue
 -->
 <script setup lang="ts">
@@ -20,7 +20,7 @@ const showMusicTime = ref(false);
 watch(
   () => volume.value,
   () => {
-    currentMusic.value.volume(volume.value);
+    currentMusic.value?.volume(volume.value);
   }
 );
 </script>
@@ -64,7 +64,6 @@ watch(
         </div>
       </div>
       <div class="music-info-other">
-        <!-- TODO: -->
         <span class="music-name" :class="{ 'music-time-in': showMusicTime }">Strings</span>
         <div class="music-author">
           <span class="author">L1vebeats/Push.audio</span>

@@ -8,6 +8,7 @@ const createWindow = () => {
     height: 672,
     minWidth: 1024,
     minHeight: 672,
+    show: false,
     frame: false,
     backgroundColor: '#fff',
     // alwaysOnTop: true, // 窗口永远在最前
@@ -25,6 +26,10 @@ const createWindow = () => {
 
   //ipcMain初始化
   IpcMainEvent(win);
+
+  win.once('ready-to-show', () => {
+    win.show();
+  });
 };
 
 app.whenReady().then(() => {
