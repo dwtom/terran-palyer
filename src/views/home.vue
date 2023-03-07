@@ -31,11 +31,20 @@
 
 <script setup lang="ts">
 import * as mockData from '@/mock/home';
+import * as services from './services/home';
 
 const bannerList = reactive(mockData.bannerList);
 const songList = reactive(mockData.songList);
 const playList = reactive(mockData.palyList);
 const artists = reactive(mockData.artists);
+
+onMounted(() => {
+  initBannerList();
+});
+
+const initBannerList = async () => {
+  await services.useBannerData();
+};
 </script>
 <style scoped lang="scss">
 .mt-20 {

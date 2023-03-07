@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const IpcMainEvent = require('./ipcMain.cjs');
+const startNeteaseService = require('./neteaseService.cjs');
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -24,8 +25,10 @@ const createWindow = () => {
     win.loadURL('http://localhost:8110');
   }
 
-  //ipcMain初始化
+  // ipcMain初始化
   IpcMainEvent(win);
+  // 启动网易云接口服务
+  startNeteaseService();
 
   win.once('ready-to-show', () => {
     win.show();

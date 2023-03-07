@@ -3,12 +3,14 @@
  * @Author: Dong Wei
  * @Date: 2023-02-27 11:16:46
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-07 16:41:05
+ * @LastEditTime: 2023-03-07 16:45:14
  * @FilePath: \audio-player\src\views\welcome.vue
 -->
 <template>
   <div class="wrap">
-    <div class="typing-word typing">Everyone told me to retire.Everyone told me to give up.But... Look at me now!</div>
+    <div class="typing-word typing pointer" title="点击直接进入" @click="router.push('/home')">
+      Everyone told me to retire.Everyone told me to give up.But... Look at me now!
+    </div>
     <Transition leave-active-class="animate__animated animate__fadeOutLeft">
       <div v-if="!isAnimating" class="anima-block"></div>
     </Transition>

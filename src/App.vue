@@ -1,5 +1,4 @@
 <template>
-  <!-- <TopDragBar :bg="topBg"></TopDragBar> -->
   <TopDragBar></TopDragBar>
   <div class="content">
     <router-view></router-view>
@@ -40,7 +39,7 @@ $--widget-height: 65px;
   height: 100vh;
   width: 100vw;
   overflow-y: auto;
-  background: 'transpartant';
+  background: transpartant;
 }
 
 .music-widget-box {
