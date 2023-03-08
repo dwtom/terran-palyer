@@ -3,13 +3,14 @@
  * @Author: Dong Wei
  * @Date: 2022-06-13 16:26:27
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-07 17:43:19
+ * @LastEditTime: 2023-03-08 11:11:22
  * @FilePath: \audio-player\src\api\index.ts
  */
 import axios from 'axios';
-import type { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import type { ResultData } from './interface/common';
 import { axiosWrap } from './helper/tools';
+
+import type { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type { Result } from './interface/common';
 
 // axios基础配置
 const baseConfig = {

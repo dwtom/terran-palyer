@@ -16,6 +16,7 @@ const createWindow = () => {
     webPreferences: {
       // 预加载脚本
       preload: path.join(__dirname, './preload.cjs'),
+      partition: String(new Date().getTime()), // 不使用缓存
     },
   });
   // 判断是否是生产环境

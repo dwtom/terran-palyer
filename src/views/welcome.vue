@@ -3,7 +3,7 @@
  * @Author: Dong Wei
  * @Date: 2023-02-27 11:16:46
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-07 16:45:14
+ * @LastEditTime: 2023-03-08 15:07:02
  * @FilePath: \audio-player\src\views\welcome.vue
 -->
 <template>

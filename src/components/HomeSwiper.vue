@@ -3,14 +3,15 @@
  * @Author: Dong Wei
  * @Date: 2023-02-28 16:14:29
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-03-01 13:48:34
+ * @LastEditTime: 2023-03-08 10:25:03
  * @FilePath: \audio-player\src\components\HomeSwiper.vue
 -->
 <script setup lang="ts">
-import type { BannerList } from '@/mock/home';
+// import type { BannerList } from '@/mock/home';
+import type { HomeApi } from '@/api/interface/home';
 
 const props = defineProps<{
-  bannerList: BannerList[] | never[];
+  bannerList: HomeApi.BannerList[] | never[];
 }>();
 
 const timer1: Ref<number | undefined> = ref(undefined);
@@ -22,11 +23,6 @@ const currentIndex = ref(0);
 const transitionTime = ref(0);
 const bannerTimer1 = ref(false);
 const bannerTimer2 = ref(false);
-const bannerList: Ref<BannerList[] | never[]> = ref([]);
-
-onBeforeMount(() => {
-  loadData();
-});
 
 onMounted(() => {
   bannerStart();
@@ -35,10 +31,6 @@ onMounted(() => {
 onBeforeRouteLeave(() => {
   clearInterval(timer1.value);
 });
-
-async function loadData() {
-  bannerList.value = props.bannerList;
-}
 
 //banner开始轮播
 function bannerStart() {
@@ -55,7 +47,7 @@ function bannerMouse(mouseEvent: any) {
 
 //banner下一张
 function nextImg() {
-  if (leftVal.value == (bannerList.value.length - 1) * imgWidth.value) {
+  if (leftVal.value == (props.bannerList.length - 1) * imgWidth.value) {
     transitionTime.value = 0.8;
     leftVal.value += imgWidth.value;
     currentIndex.value = 0;
@@ -117,13 +109,18 @@ function bannerTimerFun() {
     </div>
     <div class="banner-img" @mouseenter="bannerMouse(true)" @mouseleave="bannerMouse(false)">
       <div class="img-box" :style="{ left: `-${leftVal}vw`, transition: `${transitionTime}s` }">
-        <img v-for="(item, index) in bannerList" :key="`banner-${index}`" :src="`${item.pic}?param=720y280`" alt="" />
-        <img :src="`${bannerList[0].pic}?param=720y280`" alt="" />
+        <img
+          v-for="(item, index) in props.bannerList"
+          :key="`banner-${index}`"
+          :src="`${item.imageUrl}?param=720y280`"
+          alt=""
+        />
+        <img v-if="props.bannerList.length" :src="`${props.bannerList[0].imageUrl}?param=720y280`" alt="" />
       </div>
     </div>
     <div class="selector-box">
       <div
-        v-for="(item, index) in bannerList.length"
+        v-for="(item, index) in props.bannerList.length"
         :key="`selector-${index}`"
         @click="imgSlect(index)"
         class="selector"

@@ -3,26 +3,18 @@
  * @Author: Dong Wei
  * @Date: 2023-02-28 17:13:55
  * @LastEditors: Dong Wei
- * @LastEditTime: 2023-02-28 17:19:19
+ * @LastEditTime: 2023-03-08 13:30:14
  * @FilePath: \audio-player\src\components\HomeLatestSong.vue
 -->
 <script setup lang="ts">
+import type { HomeApi } from '@/api/interface/home';
 const props = defineProps<{
-  songList: any[];
+  songList: HomeApi.LatestSongs[];
 }>();
 
-const newestSongList = ref();
-
-onBeforeMount(() => {
-  loadData();
-});
-
-async function loadData() {
-  newestSongList.value = props.songList;
-}
-const getImgUrl = (item: any) => {
+const getImgUrl = (item: HomeApi.LatestSongs) => {
   let img = item.picUrl || item.blurPicUrl;
-  return img.replace('http://', 'https://') + '?param=90y90';
+  return img?.replace('http://', 'https://') + '?param=90y90';
 };
 const play = (song: any) => {
   console.log(song);
@@ -33,7 +25,7 @@ const play = (song: any) => {
   <div class="newest-song">
     <div class="newest-song-title">最新歌曲</div>
     <div class="song-list">
-      <div class="list-item" v-for="(item, index) in newestSongList" :key="`songList-${index}`" @dblclick="play(item)">
+      <div class="list-item" v-for="(item, index) in props.songList" :key="`songList-${index}`" @dblclick="play(item)">
         <div class="item-info">
           <div class="song-img">
             <img :src="getImgUrl(item)" alt="" />

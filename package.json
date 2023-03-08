@@ -4,7 +4,7 @@
   "private": true,
   "main": "electron/main.cjs",
   "author": "dwtom",
-  "description": "an audio player",
+  "description": "An audio player in honour of the champion of IEM 2023 SC2",
   "scripts": {
     "web-dev": "vite",
     "electron-dev": "nodemon --exec electron .",

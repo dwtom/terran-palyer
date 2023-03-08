@@ -19,7 +19,7 @@
     <!-- 推荐歌手 -->
     <section class="artists mt-40">
       <AppTitleBar title-c="推荐歌手" title-e="RECOMMENDED ARTISTS" class="mb-13" />
-      <ul class="grid-list">
+      <ul class="grid-list" id="recommendArtists">
         <li v-for="(item, index) in artists" :key="`artist-${index}`" class="grid-list-item pointer">
           <img :src="`${item.img1v1Url}?param=450y450`" alt="" class="grid-list-img artist-img" />
           <p class="artist-word" :title="item.name">{{ item.name }}</p>
@@ -30,20 +30,44 @@
 </template>
 
 <script setup lang="ts">
-import * as mockData from '@/mock/home';
+import { handleElementInClient } from '@/utils';
+// import * as mockData from '@/mock/home';
 import * as services from './services/home';
+import type { HomeApi } from '@/api/interface/home';
+// import type { commonArrayRes } from '@/api/interface/common';
 
-const bannerList = reactive(mockData.bannerList);
-const songList = reactive(mockData.songList);
-const playList = reactive(mockData.palyList);
-const artists = reactive(mockData.artists);
+// let bannerList: commonArrayRes<HomeApi.BannerList> = reactive([]);
+let bannerList: Ref<HomeApi.BannerList[]> = ref([]);
+let songList: Ref<HomeApi.LatestSongs[]> = ref([]);
+let playList: Ref<HomeApi.RecommendSongList[]> = ref([]);
+let artists: Ref<HomeApi.RecommendArtist[]> = ref([]);
 
 onMounted(() => {
   initBannerList();
+  initLatestSongList();
+  initRecommendSongList();
+  initRecommendAritsts();
 });
-
+// 轮播图
 const initBannerList = async () => {
-  await services.useBannerData();
+  bannerList.value = await services.useBannerData();
+};
+// 最新歌曲
+const initLatestSongList = async () => {
+  songList.value = await services.useLatestSongData();
+};
+// 推荐歌单
+const initRecommendSongList = async () => {
+  playList.value = await services.useRecommendSongData();
+};
+// 推荐歌手
+const initRecommendAritsts = () => {
+  const dom = document.getElementById('recommendArtists');
+  const initFn = async () => {
+    artists.value = await services.useRecommendArtistData();
+  };
+  // 刷新页面后监听失效
+  handleElementInClient(dom, initFn);
 };
 </script>
 <style scoped lang="scss">
