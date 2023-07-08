@@ -21,7 +21,7 @@ const createWindow = () => {
   });
   // 判断是否是生产环境
   if (app.isPackaged) {
-    win.loadURL('https://www.leeknostory.cn/');
+    win.loadURL('http://localhost:8110');
   } else {
     win.loadURL('http://localhost:8110');
   }
